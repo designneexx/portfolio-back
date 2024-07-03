@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { enviroments } from 'src/enviroments';
+import { enviroments } from '../enviroments';
 import { PortfolioServiceResponse } from './types';
 import FormData from 'form-data';
 

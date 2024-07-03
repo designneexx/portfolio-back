@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Portfolio, PortfolioDocument } from './schemas/portfolio.schema';
 import { CreatePortfolioDto } from './dto/CreatePortfolio.dto';
-import { UserDocument } from 'src/users/schemas/user.schema';
+import { UserDocument } from '../users/schemas/user.schema';
 import { getPortfolioModel } from './utils/getPortfolioModel';
 
 @Injectable()

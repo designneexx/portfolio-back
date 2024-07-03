@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { Request } from 'express';
-import { AccessTokenGuard } from 'src/common/guards/accessToken.guard';
-import { RefreshTokenGuard } from 'src/common/guards/refreshToken.guard';
-import { CreateUserDto } from 'src/users/dto/create-user-email.dto';
+import { AccessTokenGuard } from '../common/guards/accessToken.guard';
+import { RefreshTokenGuard } from '../common/guards/refreshToken.guard';
+import { CreateUserDto } from '../users/dto/create-user-email.dto';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
 

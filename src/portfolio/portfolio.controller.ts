@@ -10,11 +10,11 @@ import {
 } from '@nestjs/common';
 import { FormDataRequest } from 'nestjs-form-data';
 import { CreatePortfolioResumeDto } from './dto/CreatePortfolioResume.dto';
-import { portfolioGeneratorService } from 'src/externalServices';
+import { portfolioGeneratorService } from '../externalServices';
 import { PortfolioService } from './portfolio.service';
-import { AccessTokenGuard } from 'src/common/guards/accessToken.guard';
+import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import FormData from 'form-data';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { getPortfolioModel } from './utils/getPortfolioModel';
 
 @Controller('portfolio')

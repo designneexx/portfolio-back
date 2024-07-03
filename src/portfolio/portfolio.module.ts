@@ -4,9 +4,9 @@ import { PortfolioController } from './portfolio.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Portfolio, PortfolioSchema } from './schemas/portfolio.schema';
 import { MemoryStoredFile, NestjsFormDataModule } from 'nestjs-form-data';
-import { UsersService } from 'src/users/users.service';
-import { UsersModule } from 'src/users/users.module';
-import { User, UserSchema } from 'src/users/schemas/user.schema';
+import { UsersService } from '../users/users.service';
+import { UsersModule } from '../users/users.module';
+import { User, UserSchema } from '../users/schemas/user.schema';
 
 @Module({
   imports: [

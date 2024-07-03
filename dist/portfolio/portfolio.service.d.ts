@@ -25,7 +25,7 @@
 import { Model } from 'mongoose';
 import { Portfolio, PortfolioDocument } from './schemas/portfolio.schema';
 import { CreatePortfolioDto } from './dto/CreatePortfolio.dto';
-import { UserDocument } from 'src/users/schemas/user.schema';
+import { UserDocument } from '../users/schemas/user.schema';
 export declare class PortfolioService {
     private portfolioModel;
     constructor(portfolioModel: Model<PortfolioDocument>);

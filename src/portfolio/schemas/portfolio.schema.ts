@@ -4,7 +4,7 @@ import { JobExperience } from './workExperience.schema';
 import { ProjectExperience } from './projectExperience.schema';
 import { Education } from './education.schema';
 import { Skill } from './skill.schema';
-import { User } from 'src/users/schemas/user.schema';
+import { User } from '../../users/schemas/user.schema';
 import { Type } from 'class-transformer';
 import { KnowledgeOfLanuage } from './knowledgeOfLanguage.schema';
 import { TestsOfExamsOrTraining } from './testsOfExamsOrTraining.schema';

@@ -10,7 +10,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { AccessTokenGuard } from 'src/common/guards/accessToken.guard';
+import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { MailerService } from '@nestjs-modules/mailer';
 import { SendMessageDto } from './dto/send-message.dto';
 import { join } from 'path';

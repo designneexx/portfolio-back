@@ -25,7 +25,7 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { CreatePortfolioResumeDto } from './dto/CreatePortfolioResume.dto';
 import { PortfolioService } from './portfolio.service';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 export declare class PortfolioController {
     private readonly portfolioService;
     private readonly usersService;

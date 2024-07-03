@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { CreateUserDto } from 'src/users/dto/create-user-email.dto';
+import { CreateUserDto } from '../users/dto/create-user-email.dto';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
 export declare class AuthController {

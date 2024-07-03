@@ -5,8 +5,8 @@ import {
   HttpStatus,
   Injectable,
 } from '@nestjs/common';
-import { CreateUserDto } from 'src/users/dto/create-user-email.dto';
-import { UsersService } from 'src/users/users.service';
+import { CreateUserDto } from '../users/dto/create-user-email.dto';
+import { UsersService } from '../users/users.service';
 import * as argon2 from 'argon2';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
@@ -14,7 +14,7 @@ import { AuthDto } from './dto/auth.dto';
 import { MailerService } from '@nestjs-modules/mailer';
 import { join } from 'path';
 import generator from 'generate-password';
-import { UserEntity } from 'src/users/entity/user.entity';
+import { UserEntity } from '../users/entity/user.entity';
 
 @Injectable()
 export class AuthService {
