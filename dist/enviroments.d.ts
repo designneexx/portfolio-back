@@ -5,4 +5,10 @@ export declare const enviroments: {
     mongoUri: string;
     port: string;
     portfolioGeneratorServiceBaseUrl: string;
+    caCert: string;
+    dbUser: string;
+    dbPassword: string;
+    dbHostUrl: string;
+    dbRs: string;
+    dbName: string;
 };
