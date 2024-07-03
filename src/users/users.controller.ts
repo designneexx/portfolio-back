@@ -53,7 +53,7 @@ export class UsersController {
       .sendMail({
         to: user.email,
         subject: data.subject,
-        template: join(__dirname, 'templates', 'contactReg.ejs'),
+        template: join(__dirname, '../templates', 'contactReg.ejs'),
         context: {
           email: data.senderEmail,
           text: data.text,
