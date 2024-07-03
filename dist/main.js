@@ -24,7 +24,7 @@ async function bootstrap() {
     console.log(url, options);
     const AppModule = (0, app_module_1.createAppModuleFactory)(url, options);
     const app = await core_1.NestFactory.create(AppModule, new platform_fastify_1.FastifyAdapter());
-    app.enableCors();
+    app.enableCors({ origin: /.+/ });
     app.useGlobalPipes(new common_1.ValidationPipe());
     app.register(multipart_1.default);
     await app.listen(enviroments_1.enviroments.port);
