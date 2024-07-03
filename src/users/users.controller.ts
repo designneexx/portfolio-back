@@ -43,7 +43,7 @@ export class UsersController {
     @Param('userId') userId: string,
     @Body() data: SendMessageDto,
   ) {
-    const user = this.usersService.findById(userId);
+    const user = await this.usersService.findById(userId);
 
     if (!user) {
       throw new NotFoundException('Пользователь не найден');
@@ -51,9 +51,9 @@ export class UsersController {
 
     await this.mailerService
       .sendMail({
-        to: data.senderEmail,
+        to: user.email,
         subject: data.subject,
-        template: join(process.cwd(), 'src/templates', 'contactReg'),
+        template: join(__dirname, 'templates', 'contactReg.ejs'),
         context: {
           email: data.senderEmail,
           text: data.text,

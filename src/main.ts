@@ -20,13 +20,11 @@ async function bootstrap() {
   );
   const options = {
     tls: true,
-    tlsCAFile: path.join(process.cwd(), 'src', 'CA.pem'),
+    tlsCAFile: path.join(__dirname, 'CA.pem'),
     replicaSet: enviroments.dbRs,
     authSource: enviroments.dbName,
     dbName: enviroments.dbName,
-    // user: enviroments.dbUser,
   };
-  console.log(url, options);
   const AppModule = createAppModuleFactory(url, options);
 
   const app = await NestFactory.create<NestFastifyApplication>(
