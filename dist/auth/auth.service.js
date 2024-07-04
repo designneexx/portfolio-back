@@ -71,7 +71,7 @@ let AuthService = class AuthService {
             },
         };
     }
-    async sendConfirmMail(user, accessToken, refreshToken) {
+    async sendConfirmMail(user, tokens, cb) {
         const baseUrl = this.configService.get('HOST_FRONTEND_BASE_URL');
         return await this.mailerService
             .sendMail({
@@ -81,11 +81,11 @@ let AuthService = class AuthService {
             context: {
                 email: user.email,
                 password: user.password,
-                confirmUrl: `${baseUrl}?accessToken=${accessToken}&refreshToken=${refreshToken}`,
+                confirmUrl: `${baseUrl}?accessToken=${tokens.accessToken}&refreshToken=${tokens.refreshToken}`,
             },
         })
             .catch((e) => {
-            console.log(e);
+            cb();
             throw new common_1.HttpException(`Ошибка работы почты: ${JSON.stringify(e)}`, common_1.HttpStatus.UNPROCESSABLE_ENTITY);
         });
     }
@@ -110,7 +110,9 @@ let AuthService = class AuthService {
         await this.sendConfirmMail({
             password,
             email: newUser.email,
-        }, tokens.accessToken, tokens.refreshToken);
+        }, tokens, () => {
+            this.usersService.delete(newUser.id);
+        });
         return tokens;
     }
     async signIn(data) {

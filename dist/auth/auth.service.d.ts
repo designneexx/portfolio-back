@@ -5,6 +5,10 @@ import { ConfigService } from '@nestjs/config';
 import { AuthDto } from './dto/auth.dto';
 import { MailerService } from '@nestjs-modules/mailer';
 import { UserEntity } from '../users/entity/user.entity';
+type Tokens = {
+    accessToken: string;
+    refreshToken: string;
+};
 export declare class AuthService {
     private usersService;
     private jwtService;
@@ -23,7 +27,7 @@ export declare class AuthService {
             module: any;
         };
     };
-    sendConfirmMail(user: UserEntity, accessToken: string, refreshToken: string): Promise<any>;
+    sendConfirmMail(user: UserEntity, tokens: Tokens, cb: () => void): Promise<any>;
     signUp(createUserDto: CreateUserDto): Promise<any>;
     signIn(data: AuthDto): Promise<{
         tokens: {
@@ -47,3 +51,4 @@ export declare class AuthService {
         refreshToken: string;
     }>;
 }
+export {};

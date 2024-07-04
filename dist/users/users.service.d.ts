@@ -30,6 +30,7 @@ export declare class UsersService {
     private userModel;
     constructor(userModel: Model<UserDocument>);
     create(createUserDto: CreateUserDto): Promise<UserDocument>;
+    delete(id: string): Promise<void>;
     findAll(): Promise<UserDocument[]>;
     findById(id: string): Promise<UserDocument>;
     findByEmail(email: string): Promise<UserDocument>;

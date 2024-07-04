@@ -25,6 +25,9 @@ let UsersService = class UsersService {
         const createdUser = new this.userModel(createUserDto);
         return createdUser.save();
     }
+    async delete(id) {
+        await this.userModel.findOneAndDelete({ _id: id });
+    }
     async findAll() {
         return this.userModel.find().exec();
     }

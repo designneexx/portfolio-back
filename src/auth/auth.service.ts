@@ -16,6 +16,11 @@ import { join } from 'path';
 import generator from 'generate-password';
 import { UserEntity } from '../users/entity/user.entity';
 
+type Tokens = {
+  accessToken: string;
+  refreshToken: string;
+};
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -48,11 +53,7 @@ export class AuthService {
     };
   }
 
-  async sendConfirmMail(
-    user: UserEntity,
-    accessToken: string,
-    refreshToken: string,
-  ) {
+  async sendConfirmMail(user: UserEntity, tokens: Tokens, cb: () => void) {
     const baseUrl = this.configService.get('HOST_FRONTEND_BASE_URL');
 
     return await this.mailerService
@@ -63,11 +64,11 @@ export class AuthService {
         context: {
           email: user.email,
           password: user.password,
-          confirmUrl: `${baseUrl}?accessToken=${accessToken}&refreshToken=${refreshToken}`,
+          confirmUrl: `${baseUrl}?accessToken=${tokens.accessToken}&refreshToken=${tokens.refreshToken}`,
         },
       })
       .catch((e) => {
-        console.log(e);
+        cb();
         throw new HttpException(
           `Ошибка работы почты: ${JSON.stringify(e)}`,
           HttpStatus.UNPROCESSABLE_ENTITY,
@@ -102,8 +103,10 @@ export class AuthService {
         password,
         email: newUser.email,
       },
-      tokens.accessToken,
-      tokens.refreshToken,
+      tokens,
+      () => {
+        this.usersService.delete(newUser.id);
+      },
     );
 
     return tokens;

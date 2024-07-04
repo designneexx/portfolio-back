@@ -14,6 +14,10 @@ export class UsersService {
     return createdUser.save();
   }
 
+  async delete(id: string) {
+    await this.userModel.findOneAndDelete({ _id: id });
+  }
+
   async findAll(): Promise<UserDocument[]> {
     return this.userModel.find().exec();
   }
