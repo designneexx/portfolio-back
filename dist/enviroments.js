@@ -14,5 +14,6 @@ exports.enviroments = {
     dbHostUrl: process.env.DB_HOST_URL || '',
     dbRs: process.env.DB_RS || '',
     dbName: process.env.DB_NAME || '',
+    host: process.env.HOST || '',
 };
 //# sourceMappingURL=enviroments.js.map

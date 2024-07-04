@@ -34,6 +34,6 @@ async function bootstrap() {
   app.enableCors({ origin: /.+/ });
   app.useGlobalPipes(new ValidationPipe());
   app.register(multipart);
-  await app.listen(enviroments.port);
+  await app.listen(enviroments.port, enviroments.host);
 }
 bootstrap();

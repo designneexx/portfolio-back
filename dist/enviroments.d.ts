@@ -11,4 +11,5 @@ export declare const enviroments: {
     dbHostUrl: string;
     dbRs: string;
     dbName: string;
+    host: string;
 };

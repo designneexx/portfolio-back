@@ -26,7 +26,7 @@ async function bootstrap() {
     app.enableCors({ origin: /.+/ });
     app.useGlobalPipes(new common_1.ValidationPipe());
     app.register(multipart_1.default);
-    await app.listen(enviroments_1.enviroments.port);
+    await app.listen(enviroments_1.enviroments.port, enviroments_1.enviroments.host);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
