@@ -36,15 +36,15 @@ let UsersController = class UsersController {
         };
     }
     async sendMessage(userId, data) {
-        const user = this.usersService.findById(userId);
+        const user = await this.usersService.findById(userId);
         if (!user) {
             throw new common_1.NotFoundException('Пользователь не найден');
         }
         await this.mailerService
             .sendMail({
-            to: data.senderEmail,
+            to: user.email,
             subject: data.subject,
-            template: (0, path_1.join)(process.cwd(), 'src/templates', 'contactReg'),
+            template: (0, path_1.join)(__dirname, '../templates', 'contactReg.ejs'),
             context: {
                 email: data.senderEmail,
                 text: data.text,

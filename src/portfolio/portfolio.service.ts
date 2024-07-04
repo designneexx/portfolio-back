@@ -13,10 +13,22 @@ export class PortfolioService {
     private portfolioModel: Model<PortfolioDocument>,
   ) {}
 
+  async delete(id: string) {
+    await this.portfolioModel.findOneAndDelete({ _id: id });
+  }
+
   async get(user: UserDocument) {
     const model = await this.portfolioModel.findOne({ userId: user.id });
 
     return model;
+  }
+
+  async getByUserId(userId: string) {
+    const model = await this.portfolioModel.findOne({ userId });
+
+    if (!model) return null;
+
+    return getPortfolioModel(model);
   }
 
   async getById(resumeId: string) {

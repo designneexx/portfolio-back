@@ -30,6 +30,13 @@ let PortfolioController = class PortfolioController {
         this.portfolioService = portfolioService;
         this.usersService = usersService;
     }
+    async deleteResume(resumeId) {
+        await this.portfolioService.delete(resumeId);
+    }
+    async getResumeByUserId(userId) {
+        const model = await this.portfolioService.getByUserId(userId);
+        return model;
+    }
     async getResume(resumeId) {
         const model = await this.portfolioService.getById(resumeId);
         if (!model) {
@@ -48,6 +55,20 @@ let PortfolioController = class PortfolioController {
     }
 };
 exports.PortfolioController = PortfolioController;
+__decorate([
+    (0, common_1.Delete)('resume/:resumeId'),
+    __param(0, (0, common_1.Param)('resumeId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], PortfolioController.prototype, "deleteResume", null);
+__decorate([
+    (0, common_1.Get)('resume-by-user-id/:userId'),
+    __param(0, (0, common_1.Param)('userId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], PortfolioController.prototype, "getResumeByUserId", null);
 __decorate([
     (0, common_1.Get)('resume/:resumeId'),
     __param(0, (0, common_1.Param)('resumeId')),

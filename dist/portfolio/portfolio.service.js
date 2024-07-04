@@ -22,9 +22,18 @@ let PortfolioService = class PortfolioService {
     constructor(portfolioModel) {
         this.portfolioModel = portfolioModel;
     }
+    async delete(id) {
+        await this.portfolioModel.findOneAndDelete({ _id: id });
+    }
     async get(user) {
         const model = await this.portfolioModel.findOne({ userId: user.id });
         return model;
+    }
+    async getByUserId(userId) {
+        const model = await this.portfolioModel.findOne({ userId });
+        if (!model)
+            return null;
+        return (0, getPortfolioModel_1.getPortfolioModel)(model);
     }
     async getById(resumeId) {
         const model = await this.portfolioModel.findById(resumeId);

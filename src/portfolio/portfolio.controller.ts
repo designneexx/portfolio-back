@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   NotFoundException,
   Param,
@@ -23,6 +24,18 @@ export class PortfolioController {
     private readonly portfolioService: PortfolioService,
     private readonly usersService: UsersService,
   ) {}
+
+  @Delete('resume/:resumeId')
+  async deleteResume(@Param('resumeId') resumeId: string) {
+    await this.portfolioService.delete(resumeId);
+  }
+
+  @Get('resume-by-user-id/:userId')
+  async getResumeByUserId(@Param('userId') userId: string) {
+    const model = await this.portfolioService.getByUserId(userId);
+
+    return model;
+  }
 
   @Get('resume/:resumeId')
   async getResume(@Param('resumeId') resumeId: string) {

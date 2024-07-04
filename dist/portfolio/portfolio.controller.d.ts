@@ -30,6 +30,74 @@ export declare class PortfolioController {
     private readonly portfolioService;
     private readonly usersService;
     constructor(portfolioService: PortfolioService, usersService: UsersService);
+    deleteResume(resumeId: string): Promise<void>;
+    getResumeByUserId(userId: string): Promise<{
+        createdAt: any;
+        id: any;
+        userId: import("mongoose").Types.ObjectId;
+        aboutMe: string;
+        resumeUrl: string;
+        avatarPath: string;
+        firstName: string;
+        surname: string;
+        patronymic: string;
+        fullName: string;
+        mainDegreeOfQualification: string;
+        profession: string;
+        city: string;
+        citizenship: string;
+        phone: string;
+        email: string;
+        personLocation: string;
+        educationList: {
+            degreeOfEducation: string;
+            educationalInstitution: string;
+            educationDepartment: string;
+            educationDuration: {
+                start: string;
+                end: string;
+            };
+            educationFaculty: string;
+            id: any;
+        }[];
+        skillList: {
+            id: any;
+            skillDescription: string;
+            skillLevel: string;
+            skillName: string;
+        }[];
+        projectExperienceList: {
+            id: any;
+            projectDescription: string;
+            projectName: string;
+        }[];
+        jobExperienceList: {
+            companyLocation: string;
+            companyName: string;
+            id: any;
+            jobDescription: string;
+            jobDuration: {
+                start: string;
+                end: string;
+            };
+            jobTitle: string;
+        }[];
+        knowledgeOfLanguageList: {
+            id: any;
+            isNativeLanguage: boolean;
+            language: string;
+            languageDegree: string;
+        }[];
+        testsOfExamsOrTraining: {
+            description: string;
+            duration: {
+                start: string;
+                end: string;
+            };
+            id: any;
+            title: string;
+        }[];
+    }>;
     getResume(resumeId: string): Promise<{
         createdAt: any;
         id: any;

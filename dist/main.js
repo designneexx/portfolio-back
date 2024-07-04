@@ -16,12 +16,11 @@ async function bootstrap() {
     const url = util_1.default.format(enviroments_1.enviroments.mongoUri, enviroments_1.enviroments.dbUser, enviroments_1.enviroments.dbPassword, DB_HOSTS.join(','));
     const options = {
         tls: true,
-        tlsCAFile: path_1.default.join(process.cwd(), 'src', 'CA.pem'),
+        tlsCAFile: path_1.default.join(__dirname, 'CA.pem'),
         replicaSet: enviroments_1.enviroments.dbRs,
         authSource: enviroments_1.enviroments.dbName,
         dbName: enviroments_1.enviroments.dbName,
     };
-    console.log(url, options);
     const AppModule = (0, app_module_1.createAppModuleFactory)(url, options);
     const app = await core_1.NestFactory.create(AppModule, new platform_fastify_1.FastifyAdapter());
     app.enableCors({ origin: /.+/ });
